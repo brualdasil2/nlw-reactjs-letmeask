@@ -1,5 +1,8 @@
 import firebase from "firebase/app"
 
+import "firebase/auth"
+import "firebase/database"
+
 const firebaseConfig = {
     apiKey: "AIzaSyCp1IC6FLXgEaJOmylBgvMq1jk5HHCuTb8",
     authDomain: "letmeask-bruno.firebaseapp.com",
