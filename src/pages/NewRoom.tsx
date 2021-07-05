@@ -7,7 +7,11 @@ import { Button } from "../components/Button"
 
 import { Link } from "react-router-dom"
 
+import { useAuth } from "../hooks/useAuth"
+
 export function NewRoom(){
+    //const { user } = useAuth()
+
     return(
         <div id="home-container">
             <div id="logo-container">

@@ -8,12 +8,23 @@ import { Button } from "../components/Button"
 
 import { useHistory } from "react-router"
 
+import { auth, firebase } from "../services/firebase"
+
+
+import { useAuth } from "../hooks/useAuth"
 
 
 export function Home(){
+    //pra mandar pra outras rotas
     const history = useHistory()
+    //pega os dados do contexto Auth
+    const { user, signInWithGoogle } = useAuth()
 
-    function navigateToNewRoom(){
+    //chamada quando clica no botão
+    async function handleCreateRoom(){
+        if (!user){
+            await signInWithGoogle()
+        }
         history.push("/rooms/new")
     }
 
@@ -27,7 +38,7 @@ export function Home(){
             <main>
                 <div id="auth-container">
                     <img src={logoImg} alt="logo"/>
-                    <button className="create-room" onClick={navigateToNewRoom}>
+                    <button className="create-room" onClick={handleCreateRoom}>
                         <img src={googleImg} alt="icone google"/>
                         Crie sua sala com o Google
                     </button>
