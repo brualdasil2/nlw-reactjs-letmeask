@@ -54,6 +54,7 @@ export function Room() {
         //pega do firebase uma referência a essa sala
         const roomRef = database.ref(`rooms/${roomId}`)
 
+        //ou .once pra rodar uma vez só // .on fica ouvindo
         roomRef.on("value", room => {
             //room.val() retorna um objeto com o conteúdo da sala
             const databaseRoom = room.val()
@@ -119,7 +120,7 @@ export function Room() {
             <main>
                 <div className="room-title">
                     <h1>Sala React</h1>
-                    <div>4 perguntas</div>
+                    <div>{questions.length} perguntas</div>
                 </div>
 
                 <form onSubmit={handleSendQuestion}>
